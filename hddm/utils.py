@@ -670,7 +670,7 @@ def EZ_data(data, s=1):
     idx_correct = rt > 0
     mrt = np.mean(rt[idx_correct])
     vrt = np.var(rt[idx_correct])
-    pc = np.sum(idx_correct) / np.float(rt.shape[0])
+    pc = np.sum(idx_correct) / float(rt.shape[0])
 
     # Calculate EZ estimates.
     return EZ(pc, vrt, mrt, s)

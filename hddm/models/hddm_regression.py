@@ -76,7 +76,7 @@ def generate_wfpt_reg_stochastic_class(
             for i in self.value.index:
                 # get current params
                 for p in self.parents["reg_outcomes"]:
-                    param_dict[p] = np.asscalar(self.parents.value[p].loc[i])
+                    param_dict[p] = np.asarray(self.parents.value[p].loc[i]).item()
                 # sample
                 samples = hddm.generate.gen_rts(
                     method=sampling_method, size=1, dt=sampling_dt, **param_dict

@@ -227,7 +227,7 @@ class AccumulatorModel(kabuki.Hierarchical):
             # run optimization
             h._run_optimization(method=method, quantiles=quantiles, n_runs=n_runs)
 
-            return pd.Series(h.values, dtype=np.float)
+            return pd.Series(h.values, dtype=float)
 
         # bootstrap iterations
         for i_strap in range(n_bootstraps):

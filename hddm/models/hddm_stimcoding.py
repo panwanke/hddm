@@ -44,7 +44,7 @@ class HDDMStimCoding(HDDM):
             kwargs["informative"] = False
             if "include" in kwargs and "z" not in kwargs["include"]:
                 kwargs["include"].append("z")
-            else if "include" not in kwargs :
+            elif "include" not in kwargs:
                 kwargs["include"] = ["z"]
             print("Adding z to includes.")
 

@@ -76,7 +76,7 @@ def check_outlier_model(seed=None, p_outlier=0.05):
     hm.map()
     index = ["true", "estimated"]
     best_estimate = hm.values
-    df = pd.DataFrame([params_true, hm.values], index=index, dtype=np.float).dropna(1)
+    df = pd.DataFrame([params_true, hm.values], index=index, dtype=float).dropna(1)
     print("benchmark: MAP of clean data. This is as good as we can get")
     print(df)
 
@@ -87,14 +87,14 @@ def check_outlier_model(seed=None, p_outlier=0.05):
     hm = hddm.HDDMTruncated(data)
     hm.map()
     index = ["best_estimate", "this_estimate"]
-    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=np.float).dropna(1)
+    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=float).dropna(1)
     print("MAP with outliers: This is as bas as we can get")
     print(df)
 
     # MAP with p_outlier as random variable
     hm = hddm.HDDMTruncated(data, include="p_outlier")
     hm.map()
-    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=np.float)
+    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=float)
     df.loc["best_estimate", "p_outlier"] = 0
     print("MAP with random p_outlier (Estimated from the data)")
     print(df.dropna(1))
@@ -103,14 +103,14 @@ def check_outlier_model(seed=None, p_outlier=0.05):
     fixed_p_outlier = 0.1
     hm = hddm.HDDMTruncated(data, p_outlier=fixed_p_outlier)
     hm.map()
-    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=np.float)
+    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=float)
     print("MAP with fixed p_outlier (%.3f) " % fixed_p_outlier)
     print(df.dropna(1))
 
     # Chi-square
     hm = hddm.HDDMTruncated(data)
     hm.optimize(method="chisquare")
-    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=np.float).dropna(1)
+    df = pd.DataFrame([best_estimate, hm.values], index=index, dtype=float).dropna(1)
     print("Chisquare method")
     print(df)
 

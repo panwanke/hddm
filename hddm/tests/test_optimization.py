@@ -96,7 +96,7 @@ def optimization_recovery_single_subject(
             # compare results to true values
             index = ["true", "estimated"]
             df = pd.DataFrame(
-                [merged_params, recovered_params], index=index, dtype=np.float
+                [merged_params, recovered_params], index=index, dtype=float
             ).dropna(1)
             print(df)
 
@@ -218,7 +218,7 @@ def recovery_with_outliers(repeats=10, seed=1, random_p_outlier=True):
             # compare results to true values
             index = ["best_estimate", "current_estimate"]
             df = pd.DataFrame(
-                [best_params, recovered_params], index=index, dtype=np.float
+                [best_params, recovered_params], index=index, dtype=float
             ).dropna(1)
             print(df)
 
